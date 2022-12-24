@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as C from './App.styles';
-import type { Item } from './types/Item';
+import type { Item } from './types/item';
 import { ListItem } from './components/Listitem/';
 
 const App = () => {
