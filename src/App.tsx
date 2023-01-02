@@ -2,6 +2,7 @@ import { useState } from 'react';
 import * as C from './App.styles';
 import type { Item } from './types/item';
 import { ListItem } from './components/Listitem/';
+import { AddArea } from './components/AddArea/';
 
 const App = () => {
   const [list, setlist] = useState<Item[]>([
@@ -9,11 +10,21 @@ const App = () => {
     { id:2, name:'indo ali mas em outro lugar', done:false},
   ]);
 
+  const handleAddTask = (taskName: string) => {
+    let newlist = [...list];
+    newlist.push({
+      id: list.length + 1,
+      name: taskName,
+      done: false
+    });
+    setlist(newlist);
+  }
+
   return (
     <C.Container>
       <C.Area>
         <C.Header> Lista de tarefas</C.Header>
-        { /* área para adicionar item */}
+        <AddArea onEnter={handleAddTask} />
 
         {list.map((item, index)=>(
           <ListItem key={index} item={item} />
